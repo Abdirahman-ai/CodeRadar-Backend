@@ -1,10 +1,12 @@
 package com.example.CodeRadar.service.impl;
 
 import com.example.CodeRadar.dto.ContributionDto;
+import com.example.CodeRadar.dto.ContributionSummaryDto;
 import com.example.CodeRadar.entity.Contribution;
 import com.example.CodeRadar.entity.Project;
 import com.example.CodeRadar.entity.User;
 import com.example.CodeRadar.exception.BadRequestException;
+import com.example.CodeRadar.exception.ResourceNotFoundException;
 import com.example.CodeRadar.mapper.ContributionMapper;
 import com.example.CodeRadar.mapper.ProjectMapper;
 import com.example.CodeRadar.repository.ContributionRepository;
@@ -14,8 +16,7 @@ import com.example.CodeRadar.service.ContributionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -62,6 +63,54 @@ public class ContributionServiceImpl implements ContributionService {
         }
 
         return contributionMapper.entitiesToDto(contributions);
+    }
+
+    @Override
+    public List<ContributionSummaryDto> getContributionSummaryByProjectId(Long projectId) {
+        Project project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found"));
+
+        List<Contribution> contributions = project.getContributions();
+        if (contributions == null || contributions.isEmpty()) {
+            throw new ResourceNotFoundException("No contributions found for this project");
+        }
+
+        int totalCommits = 0;
+        int totalLoc = 0;
+
+        // Group contributions by userId
+        Map<Long, ContributionSummaryDto> summaryMap = new HashMap<>();
+
+        for (Contribution contribution : contributions) {
+            Long userId = contribution.getUser().getId();
+
+            ContributionSummaryDto summary = summaryMap.getOrDefault(userId, new ContributionSummaryDto());
+            summary.setUserId(userId);
+            summary.setGithubUsername(contribution.getUser().getGithubUsername());
+
+            // Add up values
+            summary.setCommits(summary.getCommits() + contribution.getCommits());
+            summary.setLinesOfCode(summary.getLinesOfCode() + contribution.getLinesOfCode());
+            summary.setPullRequests(summary.getPullRequests() + contribution.getPullRequests());
+            summary.setIssues(summary.getIssues() + contribution.getIssues());
+
+            summaryMap.put(userId, summary);
+
+            totalCommits += contribution.getCommits();
+            totalLoc += contribution.getLinesOfCode();
+        }
+
+        // Calculate percentages
+        for (ContributionSummaryDto summary : summaryMap.values()) {
+            if (totalCommits > 0) {
+                summary.setCommitPercentage((summary.getCommits() * 100.0) / totalCommits);
+            }
+            if (totalLoc > 0) {
+                summary.setLocPercentage((summary.getLinesOfCode() * 100.0) / totalLoc);
+            }
+        }
+
+        return new ArrayList<>(summaryMap.values());
     }
 }
 
