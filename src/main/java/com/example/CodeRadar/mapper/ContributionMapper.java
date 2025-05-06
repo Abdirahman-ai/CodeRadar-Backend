@@ -5,6 +5,8 @@ import com.example.CodeRadar.entity.Contribution;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface ContributionMapper {
 
@@ -15,5 +17,7 @@ public interface ContributionMapper {
     @Mapping(source = "userId", target = "user.id")
     @Mapping(source = "projectId", target = "project.id")
     Contribution dtoToEntity(ContributionDto contributionDto);
+
+    List<Contribution> dtoToEntities(List<ContributionDto> contributionDto);
 }
 

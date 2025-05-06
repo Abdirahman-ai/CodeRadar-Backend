@@ -20,6 +20,7 @@ public class Project {
     private String name;
     private String repoUrl;
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Contribution> contributions;
+    
 }
