@@ -19,5 +19,6 @@ public interface ContributionMapper {
     Contribution dtoToEntity(ContributionDto contributionDto);
 
     List<Contribution> dtoToEntities(List<ContributionDto> contributionDto);
+    List<ContributionDto> entitiesToDto(List<Contribution> contributions);
 }
 
