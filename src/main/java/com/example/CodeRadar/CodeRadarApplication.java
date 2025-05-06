@@ -9,5 +9,4 @@ public class CodeRadarApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CodeRadarApplication.class, args);
 	}
-
 }
