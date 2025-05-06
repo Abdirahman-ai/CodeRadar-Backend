@@ -35,3 +35,32 @@ CodeRadar is a backend service for tracking GitHub project contributions and vis
 - ├── repository/
 - ├── service/
 - │└── impl/
+
+---
+
+## 🧪 API Endpoints
+
+### 👤 Users
+- `POST /api/users` – Create a user
+- `GET /api/users` – List all users
+- `GET /api/users/{id}` – Get user by ID
+
+### 📁 Projects
+- `POST /api/projects` – Create project (with optional contributions)
+- `GET /api/projects` – List all projects
+- `GET /api/projects/{id}` – Get project by ID
+
+### 📈 Contributions
+- `POST /api/contributions` – Create a contribution
+- `GET /api/contributions/project/{projectId}` – List all contributions for a project
+- `GET /api/contributions/summary/project/{projectId}` – Get aggregated contribution summary by user
+
+---
+
+## 🧾 Setup Instructions
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/your-username/CodeRadar.git
+   cd CodeRadar
+
