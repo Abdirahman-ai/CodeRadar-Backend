@@ -26,4 +26,12 @@ CodeRadar is a backend service for tracking GitHub project contributions and vis
 ---
 
 ## 🧱 Project Structure
-
+- src/
+- ├── controller/
+- ├── dto/
+- ├── entity/
+- ├── exception/
+- ├── mapper/
+- ├── repository/
+- ├── service/
+- │└── impl/
