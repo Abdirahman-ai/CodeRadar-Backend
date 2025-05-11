@@ -112,5 +112,11 @@ public class ContributionServiceImpl implements ContributionService {
 
         return new ArrayList<>(summaryMap.values());
     }
+
+    @Override
+    public List<ContributionDto> getAllContributions() {
+        List<Contribution> contributions = contributionRepository.findAll();
+        return contributionMapper.entitiesToDto(contributions);
+    }
 }
 

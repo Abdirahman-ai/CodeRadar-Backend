@@ -10,4 +10,5 @@ public interface ContributionService {
     List<ContributionDto> getContributionsByProjectId(Long projectId);
     List<ContributionSummaryDto> getContributionSummaryByProjectId(Long projectId);
 
+    List<ContributionDto> getAllContributions();
 }

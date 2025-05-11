@@ -31,5 +31,11 @@ public class ContributionController {
         return ResponseEntity.ok(contributionService.getContributionSummaryByProjectId(projectId));
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<ContributionDto>> getAllContributions() {
+        return ResponseEntity.ok(contributionService.getAllContributions());
+    }
+
+
 }
 
