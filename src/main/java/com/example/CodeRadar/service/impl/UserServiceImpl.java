@@ -1,7 +1,10 @@
 package com.example.CodeRadar.service.impl;
 
+import com.example.CodeRadar.dto.LoginRequestDto;
+import com.example.CodeRadar.dto.LoginResponseDto;
 import com.example.CodeRadar.dto.UserDto;
 import com.example.CodeRadar.entity.User;
+import com.example.CodeRadar.exception.BadRequestException;
 import com.example.CodeRadar.exception.ResourceNotFoundException;
 import com.example.CodeRadar.mapper.UserMapper;
 import com.example.CodeRadar.repository.UserRepository;
@@ -38,5 +41,16 @@ public class UserServiceImpl implements UserService {
             throw new ResourceNotFoundException("User not found with id: " + id);
         }
         return userMapper.entityToDto(user.get());
+    }
+
+    @Override
+    public LoginResponseDto loginUser(LoginRequestDto loginRequestDto) {
+        Optional<User> user = userRepository.findByEmail(loginRequestDto.getEmail());
+        if (user.isPresent()) {
+            // For now, accept any password
+            return new LoginResponseDto("Login successful for " + user.get().getGithubUsername());
+        } else {
+            throw new BadRequestException("Invalid email or user not found.");
+        }
     }
 }
