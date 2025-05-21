@@ -12,4 +12,5 @@ public class UserDto {
     private String githubUsername;
     private String fullName;
     private String email;
+    private String password;
 }

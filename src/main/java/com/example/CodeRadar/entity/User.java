@@ -22,6 +22,10 @@ public class User {
     private String fullName;
     private String email;
 
+    @Column(nullable = false)
+    private String password;
+
+
     @OneToMany(mappedBy = "user")
     private List<Contribution> contributions;
 }

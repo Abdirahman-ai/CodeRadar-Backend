@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 @Component
@@ -26,8 +27,9 @@ public class DataSeeder implements CommandLineRunner {
         if (!userRepository.findAll().isEmpty()) return;
 
         // Create users
-        User alice = new User(null, "alice", "Alice Doe", "alice@example.com", null);
-        User bob = new User(null, "bob", "Bob Smith", "bob@example.com", null);
+        User alice = new User(null, "alice", "Alice Doe", "alice@example.com", "password123", new ArrayList<>());
+        User bob = new User(null, "bob", "Bob Smith", "bob@example.com", "password123", new ArrayList<>());
+
 
         userRepository.saveAll(Arrays.asList(alice, bob));
 

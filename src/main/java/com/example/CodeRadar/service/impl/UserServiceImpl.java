@@ -25,6 +25,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto createUser(UserDto userDto) {
         User user = userMapper.dtoToEntity(userDto);
+        // In future: user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         return userMapper.entityToDto(userRepository.saveAndFlush(user));
     }
 
@@ -46,9 +47,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public LoginResponseDto loginUser(LoginRequestDto loginRequestDto) {
         Optional<User> user = userRepository.findByEmail(loginRequestDto.getEmail());
+
         if (user.isPresent()) {
-            // For now, accept any password
-            return new LoginResponseDto("Login successful for " + user.get().getGithubUsername());
+            if (user.get().getPassword().equals(loginRequestDto.getPassword())) {
+                return new LoginResponseDto("Login successful for " + user.get().getGithubUsername());
+            } else {
+                throw new BadRequestException("Incorrect password.");
+            }
         } else {
             throw new BadRequestException("Invalid email or user not found.");
         }
