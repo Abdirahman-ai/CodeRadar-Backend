@@ -12,6 +12,7 @@ public interface ContributionMapper {
 
     @Mapping(source = "user.id", target = "userId")
     @Mapping(source = "project.id", target = "projectId")
+    @Mapping(source = "user.githubUsername", target = "githubUsername")
     ContributionDto entityToDto(Contribution contribution);
 
     @Mapping(source = "userId", target = "user.id")

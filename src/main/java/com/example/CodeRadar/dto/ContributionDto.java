@@ -15,5 +15,7 @@ public class ContributionDto {
     private int linesOfCode;
     private Long userId;
     private Long projectId;
+
+    private String githubUsername;
 }
 
