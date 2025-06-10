@@ -4,6 +4,17 @@ CodeRadar is a backend service for tracking GitHub project contributions and vis
 
 ---
 
+## 🛠️ Tech Stack
+
+- **Backend**: Java 21, Spring Boot 3
+- **Database**: PostgreSQL
+- **ORM**: Spring Data JPA
+- **Mapping**: MapStruct
+- **Testing**: Postman (manual)
+- **Build Tool**: Maven
+
+---
+
 ## 📸 Demo
 
 ### 🏠 Homepage  
@@ -33,17 +44,6 @@ CodeRadar is a backend service for tracking GitHub project contributions and vis
 - Aggregate and summarize contributions by user
 - Calculate percentage breakdowns of commits and lines of code per user
 - RESTful API powered by Spring Boot, PostgreSQL, and MapStruct
-
----
-
-## 🛠️ Tech Stack
-
-- **Backend**: Java 21, Spring Boot 3
-- **Database**: PostgreSQL
-- **ORM**: Spring Data JPA
-- **Mapping**: MapStruct
-- **Testing**: Postman (manual)
-- **Build Tool**: Maven
 
 ---
 
