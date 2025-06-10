@@ -8,7 +8,7 @@ CodeRadar is a backend service for tracking GitHub project contributions and vis
 
 | Homepage | Login | Dashboard |
 |---------|--------|------------|
-| ![Homepage]() | ![Login](https://yourdomain.com/assets/login.gif) | ![Dashboard]() |
+| ![Homepage](https://github.com/Abdirahman-ai/CodeRadar-Backend/blob/master/gifs/dashboard.png) | ![Login]() | ![Dashboard]() |
 
 | Create Project | Contribution Summary | Team Table |
 |---------------|----------------------|-------------|
