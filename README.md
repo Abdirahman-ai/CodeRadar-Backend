@@ -4,6 +4,19 @@ CodeRadar is a backend service for tracking GitHub project contributions and vis
 
 ---
 
+## 📸 Demo
+
+| Homepage | Login | Dashboard |
+|---------|--------|------------|
+| ![Homepage]() | ![Login](https://yourdomain.com/assets/login.gif) | ![Dashboard]() |
+
+| Create Project | Contribution Summary | Team Table |
+|---------------|----------------------|-------------|
+| ![Create]() | ![Summary]() | ![Team]() |
+
+
+---
+
 ## 🚀 Features
 
 - Create and manage users, projects, and contributions
@@ -63,4 +76,3 @@ CodeRadar is a backend service for tracking GitHub project contributions and vis
    ```bash
    git clone https://github.com/your-username/CodeRadar.git
    cd CodeRadar
-
