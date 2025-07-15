@@ -83,5 +83,5 @@ CodeRadar is a backend service for tracking GitHub project contributions and vis
 
 1. **Clone the repo**
    ```bash
-   git clone https://github.com/your-username/CodeRadar.git
+   git clone https://github.com/abdirahman-ai/CodeRadar.git
    cd CodeRadar
