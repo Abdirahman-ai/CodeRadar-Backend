@@ -30,7 +30,7 @@ CodeRadar is a backend service for tracking GitHub project contributions and vis
 ![Create](https://yourdomain.com/assets/create-project.gif)
 
 ### 📈 Contribution Summary  
-![Summary](https://yourdomain.com/assets/contribution-summary.gif)
+![Summary](https://github.com/Abdirahman-ai/CodeRadar-Backend/blob/master/gifs/contributionSummary.png)
 
 ### 👥 Team Member Table  
 ![Team](https://yourdomain.com/assets/team-table.gif)
